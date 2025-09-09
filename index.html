@@ -89,6 +89,45 @@
       font-weight:800; color:#0b2a4a; background:#f1f5ff; border:1px dashed #c7d7ff;
       padding:10px; border-radius:12px; line-height:1.4
     }
+
+/* Nút 3: cam san hô */
+button.action3 {
+  background: linear-gradient(135deg, #ff6f61, #f4511e);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+button.action3:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(244,81,30,.45);
+  filter: brightness(1.07);
+}
+
+
+button.action2 {
+  background: linear-gradient(135deg, #d63384, #6f42c1);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+button.action2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(111,66,193,.45);
+  filter: brightness(1.06);
+}
+
+
+    
     .formula{color:#334155; font-size:.95rem; text-align:center}
 
     /* Canvas */
@@ -139,8 +178,8 @@
 
   <!-- Tabs -->
   <div class="tabs">
-    <button id="btnAngle" class="tab primary active">✨ Góc lượng giác</button>
-    <button id="btnRepr"  class="tab secondary">✨ Điểm biểu diễn góc lượng giác</button>
+    <button id="btnAngle" class="action3">🌐 Góc lượng giác</button>
+    <button id="btnRepr"  class="action2">📍 Điểm biểu diễn góc lượng giác</button>
   </div>
 
 
@@ -628,4 +667,5 @@
 </script>
 </body>
 </html>
+
 
