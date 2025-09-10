@@ -373,6 +373,20 @@ body {
 
       let alphaDeg = 0, betaDeg = 45;
       let dragging=false, lastRaw=0, ignoreSync=false;
+function resizeCanvas(){
+  const rect = canvas.getBoundingClientRect();
+  const scale = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width * scale;
+  canvas.height = rect.height * scale;
+
+  ctx.setTransform(scale, 0, 0, scale, 0, 0); // scale ngược để không bị phóng to
+
+  cx = rect.width / 2;
+  cy = rect.height / 2;
+
+  redraw();
+}
 
       function drawAxes(){
         ctx.save();
@@ -539,6 +553,20 @@ body {
 
       let alphaDeg = 0, betaDeg = 90; // Oy mặc định thẳng đứng
       let dragging=false, lastRaw=0, ignoreSync=false, activePointerId=null;
+function resizeCanvas(){
+  const rect = canvas.getBoundingClientRect();
+  const scale = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width * scale;
+  canvas.height = rect.height * scale;
+
+  ctx.setTransform(scale, 0, 0, scale, 0, 0); // scale ngược để không bị phóng to
+
+  cx = rect.width / 2;
+  cy = rect.height / 2;
+
+  redraw();
+}
 
       function drawAxes(){
         ctx.save();
@@ -1210,6 +1238,7 @@ body {
 </script>
 </body>
 </html>
+
 
 
 
