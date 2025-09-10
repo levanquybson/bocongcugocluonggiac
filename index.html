@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Góc lượng giác — Bộ công cụ trực quan (gộp 3 view)</title>
 
   <!-- Google Font -->
@@ -170,34 +170,15 @@
       min-width: 60px;
       box-sizing: border-box;
     }
-body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-    footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      background: #f0f0f0;
-      color: #333;
-      border-top: 1px solid #ccc;
-
-      /* chống copy / bôi đen */
-      user-select: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-    }
-#canvas2 {
-  width: 100%;          /* luôn full ngang màn hình */
-  max-width: 760px;     /* không quá to trên PC */
-  aspect-ratio: 760 / 540; /* giữ tỉ lệ */
-  display: block;
-  margin: auto;
+section {
+  display: flex;
+  justify-content: center;
 }
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
     /* small adjustment for the replaced view (view3 controls) */
     .view3-left .row { flex-wrap:wrap; }
     .view3-left #angleLabelVal{ display:block; margin-top:6px; font-weight:700; color:#1565c0; background:#e3f2fd; padding:6px 8px; border-radius:8px; text-align:center;}
@@ -246,7 +227,7 @@ body {
       </aside>
 
       <section>
-        <canvas id="canvas1" width="760" height="540"></canvas>
+        <canvas id="canvas1" width="640" height="540"></canvas>
       </section>
     </div>
   </section>
@@ -279,10 +260,9 @@ body {
         <div class="formula">Công thức quy đổi: \( \alpha^{\circ} = \dfrac{\alpha\pi}{180}\,\text{rad} \)</div>
       </aside>
 
-     <section style="display:flex; justify-content:center;">
-  <canvas id="canvas2" width="760" height="540"></canvas>
-</section>
-
+      <section>
+        <canvas id="canvas2" width="640" height="540"></canvas>
+      </section>
     </div>
   </section>
 
@@ -333,7 +313,7 @@ body {
       </aside>
 
       <section>
-        <canvas id="circleCanvasVal" width="760" height="540"></canvas>
+        <canvas id="circleCanvasVal" width="640" height="540"></canvas>
       </section>
     </div>
   </section>
@@ -342,23 +322,6 @@ body {
     // ========= Helpers chung =========
     const toRad = d => d * Math.PI / 180;
     const toDeg = r => r * 180 / Math.PI;
-    const canvas = document.getElementById('canvas2');
-const ctx = canvas.getContext('2d');
-let cx, cy;
-
-function resizeCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width;   // nội bộ = kích thước hiển thị
-  canvas.height = rect.height;
-
-  cx = canvas.width / 2;
-  cy = canvas.height / 2;
-
-  redraw();
-}
-
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // chạy 1 lần khi load
 
     function gcd(a,b){a=Math.abs(a);while(b){[a,b]=[b,a%b]}return a||1}
     function degToPiFrac(deg){
@@ -398,7 +361,6 @@ resizeCanvas(); // chạy 1 lần khi load
       let alphaDeg = 0, betaDeg = 45;
       let dragging=false, lastRaw=0, ignoreSync=false;
 
-
       function drawAxes(){
         ctx.save();
         const xRight = canvas.width - 40;
@@ -419,6 +381,8 @@ resizeCanvas(); // chạy 1 lần khi load
         ctx.beginPath(); ctx.arc(cx,cy,3,0,2*Math.PI); ctx.fillStyle='#000'; ctx.fill();
         ctx.fillText('O', cx-18, cy+16);
       }
+
+
 
       function drawArc(){
         const rad = toRad(alphaDeg);
@@ -565,11 +529,10 @@ resizeCanvas(); // chạy 1 lần khi load
       let alphaDeg = 0, betaDeg = 90; // Oy mặc định thẳng đứng
       let dragging=false, lastRaw=0, ignoreSync=false, activePointerId=null;
 
-
       function drawAxes(){
         ctx.save();
         // Ox
-        const xLeft = 120, xRight = canvas.width - 120;
+        const xLeft = 100, xRight = canvas.width - 80;
         ctx.beginPath(); ctx.moveTo(xLeft, cy); ctx.lineTo(xRight, cy);
         ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2.4; ctx.stroke();
         drawArrowHead(ctx, xRight, cy, 1, 0, '#0f172a');
@@ -800,7 +763,7 @@ resizeCanvas(); // chạy 1 lần khi load
       const identityBox = document.getElementById('identityBoxVal');
 
       const centerX = canvas.width/2, centerY = canvas.height/2;
-      const radius = 210, innerR = radius * 0.22;
+      const radius = 200, innerR = radius * 0.22;
 
       let totalAngle = 0, displayAngle = 0, dragging=false, lastRaw=0, ignoreSync=false;
 
@@ -813,7 +776,9 @@ resizeCanvas(); // chạy 1 lần khi load
       }
 
       // exact trig lookup
-      function getExactTrig(deg) {
+      
+
+function getExactTrig(deg) {
         let d = ((deg % 360) + 360) % 360;
         const exact = {
           0:   { sin: "0",     cos: "1",      tan: "0",      cot: "∞" },
@@ -1210,36 +1175,5 @@ resizeCanvas(); // chạy 1 lần khi load
       btnValues.addEventListener('click', ()=> activate(3));
     })();
   </script>
-  <meta charset="UTF-8">
-<footer id="copyright"></footer>
-
-<script>
-  // Base64 đúng (chữ Quý)
-  const b64Copyright = "wqkgMjAyNSBMw6ogVsSDbiBRdcO9K0dQVC4gQWxsIHJpZ2h0cyByZXNlcnZlZC4=";
-
-  const bytes = Uint8Array.from(atob(b64Copyright), c => c.charCodeAt(0));
-  const text  = new TextDecoder("utf-8").decode(bytes);
-
-  // Kiểm tra nhanh trên console: phải in đúng "© 2025 Lê Văn Quý+GPT. All rights reserved."
-  console.log(text);
-
-  document.getElementById("copyright").textContent = text;
-
-  // (tuỳ chọn) chặn chuột phải & Ctrl+C như bạn đã làm
-  document.addEventListener("contextmenu", e => e.preventDefault());
-  document.addEventListener("keydown", e => {
-    if (e.ctrlKey && e.key.toLowerCase() === "c") {
-      e.preventDefault();
-      alert("!");
-    }
-  });
-</script>
 </body>
 </html>
-
-
-
-
-
-
-
