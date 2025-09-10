@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Góc lượng giác — Bộ công cụ trực quan (gộp 3 view)</title>
+  <title>Góc lượng giác — Bộ công cụ trực quan </title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -199,6 +199,7 @@ body {
       -moz-user-select: none;
       -ms-user-select: none;
     }
+
     /* small adjustment for the replaced view (view3 controls) */
     .view3-left .row { flex-wrap:wrap; }
     .view3-left #angleLabelVal{ display:block; margin-top:6px; font-weight:700; color:#1565c0; background:#e3f2fd; padding:6px 8px; border-radius:8px; text-align:center;}
@@ -206,7 +207,7 @@ body {
   </style>
 </head>
 <body>
-  <h1>BỘ CÔNG CỤ GÓC LƯỢNG GIÁC</h1>
+  <h1>📐BỘ CÔNG CỤ GÓC LƯỢNG GIÁC⭕</h1>
   <div style="text-align:center; margin:8px 0 18px; font-style:italic; color:#e11d48; font-weight:800;">
     “Lượng giác là ngôn ngữ của dao động và vòng tròn.”
   </div>
@@ -221,29 +222,29 @@ body {
   <section id="view-angle" class="view active">
     <div class="layout">
       <aside class="panel">
-        <div class="panel-title">Nhập góc lượng giác hoặc rê điểm M</div>
+        <div class="panel-title">✨Nhập số đo góc lượng giác hoặc rê điểm M</div>
         <div class="row">
-          <label>Độ (°):
+          <label>👉Độ (°):
           <input type="number" id="degInput1" value="0" step="1"></label>
         </div>
         <div class="row">
-          <label>Radian:
+          <label>✨Radian:
           <input type="text" id="radInput1" value="0" readonly></label>
         </div>
 
         <div class="row" style="flex-wrap:nowrap;">
-          <label for="betaInput1">Góc xOy (°):</label>
+          <label for="betaInput1">⏰Góc xOy (°):</label>
           <input type="number" id="betaInput1" value="45" step="1">
         </div>
 
         <div id="info1">
-          α = <span id="degShow1">0</span> (<span id="radShow1">0</span> rad)<br>
-          k = <span id="kShow1">0</span> vòng quay<br>
+          👉 α = <span id="degShow1">0</span> (<span id="radShow1">0</span> rad)<br> 👉có 
+          k = <span id="kShow1">0</span> vòng quay theo
           chiều <span id="sgnShow1">0</span>
         </div>
 
-        <div class="row"><button id="resetBtn1" class="action5">Đưa về 0°</button></div>
-        <div class="formula">Công thức quy đổi: \( \alpha^{\circ} = \dfrac{\alpha\pi}{180}\,\text{rad} \)</div>
+        <div class="row"><button id="resetBtn1" class="action5">🔄Đưa về 0°</button></div>
+        <div class="formula">⚠️Công thức quy đổi: \( \alpha^{\circ} = \dfrac{\alpha\pi}{180}\,\text{rad} \)</div>
       </aside>
 
       <section>
@@ -256,27 +257,26 @@ body {
   <section id="view-repr" class="view">
     <div class="layout">
       <aside class="panel">
-        <div class="panel-title">Nhập sô đo góc cần biểu diễn</div>
+        <div class="panel-title">✨Nhập số đo góc cần biểu diễn hoặc rê điểm M</div>
         <div class="row">
-          <label>Độ (°):
+          <label>👉Độ (°):
           <input type="number" id="degInput2" value="0" step="1"></label>
         </div>
         <div class="row">
-          <label>Radian:
+          <label>✨Radian:
           <input type="text" id="radInput2" value="0" readonly></label>
         </div>
         <div class="row">
-          <label>Góc xOy (°):
+          <label>⏰Góc xOy (°):
           <input type="number" id="betaInput2" value="90" step="1"></label>
         </div>
 
         <div id="info2">
-          α = <span id="degShow2">0</span> (<span id="radShow2">0</span> rad)<br>
-          k = <span id="kShow2">0</span> vòng quay<br>
-          theo chiều <span id="sgnShow2">0</span>
+         👉 α = <span id="degShow2">0</span> (<span id="radShow2">0</span> rad) <br> 👉có
+          k = <span id="kShow2">0</span> vòng quay theo chiều <span id="sgnShow2">0</span>
         </div>
 
-        <div class="row"><button id="resetBtn2" class="action5">Đưa về 0°</button></div>
+        <div class="row"><button id="resetBtn2" class="action5">🔄Đưa về 0°</button></div>
         <div class="formula">Công thức quy đổi: \( \alpha^{\circ} = \dfrac{\alpha\pi}{180}\,\text{rad} \)</div>
       </aside>
 
@@ -290,24 +290,24 @@ body {
   <section id="view-values" class="view">
     <div class="layout">
       <aside class="panel view3-left">
-        <div class="panel-title">GIÁ TRỊ LƯỢNG GIÁC CỦA GÓC</div>
+        <div class="panel-title">✨Nhập số đo góc cần tính giá trị hoặc rê điểm M</div>
 
         <div class="row">
           <div>
-            <label for="angleInputVal">Độ (°):</label>
+            <label for="angleInputVal">👉Độ (°):</label>
             <input type="number" id="angleInputVal" value="0" step="1">
           </div>
           <div>
-            <label for="radInputVal">Radian:</label>
+            <label for="radInputVal">✨Radian:</label>
             <input type="text" id="radInputVal" value="0" placeholder="π/3, 2π/3, a·π/180, 1.57">
           </div>
         </div>
 
-        <div class="row"><span id="angleLabelVal">Góc hiện tại: 0° (0 rad)</span></div>
+        <div class="row"><span id="angleLabelVal">⏰Góc hiện tại: 0° (0 rad)</span></div>
 
         <div class="row" style="display:flex; flex-direction:column; gap:6px; align-items:flex-start;">
           <div style="display:flex; flex-direction:column; gap:4px;">
-            <label for="modeSelectVal" style="margin:0;">Tùy chọn:
+            <label for="modeSelectVal" style="margin:0;">⚙️Tùy chọn:
               <select id="modeSelectVal" style="min-width:220px; padding:4px;">
                 <option value="none">Định nghĩa giá trị lượng giác</option>
                 <option value="opposite">Góc đối (α &amp; –α)</option>
@@ -326,7 +326,7 @@ body {
           </div>
         </div>
 
-        <button id="resetBtnVal" class="action5">Đưa về 0°</button>
+        <button id="resetBtnVal" class="action5">🔄Đưa về 0°</button>
 
         <div id="identityBoxVal"></div>
 
@@ -1221,4 +1221,3 @@ function getExactTrig(deg) {
 </script>
 </body>
 </html>
-
