@@ -191,7 +191,13 @@ body {
       -moz-user-select: none;
       -ms-user-select: none;
     }
-
+#canvas2 {
+  width: 100%;          /* luôn full ngang màn hình */
+  max-width: 760px;     /* không quá to trên PC */
+  aspect-ratio: 760 / 540; /* giữ tỉ lệ */
+  display: block;
+  margin: auto;
+}
     /* small adjustment for the replaced view (view3 controls) */
     .view3-left .row { flex-wrap:wrap; }
     .view3-left #angleLabelVal{ display:block; margin-top:6px; font-weight:700; color:#1565c0; background:#e3f2fd; padding:6px 8px; border-radius:8px; text-align:center;}
@@ -336,6 +342,24 @@ body {
     // ========= Helpers chung =========
     const toRad = d => d * Math.PI / 180;
     const toDeg = r => r * 180 / Math.PI;
+    const canvas = document.getElementById('canvas2');
+const ctx = canvas.getContext('2d');
+let cx, cy;
+
+function resizeCanvas(){
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;   // nội bộ = kích thước hiển thị
+  canvas.height = rect.height;
+
+  cx = canvas.width / 2;
+  cy = canvas.height / 2;
+
+  redraw();
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas(); // chạy 1 lần khi load
+
     function gcd(a,b){a=Math.abs(a);while(b){[a,b]=[b,a%b]}return a||1}
     function degToPiFrac(deg){
       if(deg===0) return "0";
@@ -373,20 +397,7 @@ body {
 
       let alphaDeg = 0, betaDeg = 45;
       let dragging=false, lastRaw=0, ignoreSync=false;
-function resizeCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  const scale = window.devicePixelRatio || 1;
 
-  canvas.width = rect.width * scale;
-  canvas.height = rect.height * scale;
-
-  ctx.setTransform(scale, 0, 0, scale, 0, 0); // scale ngược để không bị phóng to
-
-  cx = rect.width / 2;
-  cy = rect.height / 2;
-
-  redraw();
-}
 
       function drawAxes(){
         ctx.save();
@@ -553,20 +564,7 @@ function resizeCanvas(){
 
       let alphaDeg = 0, betaDeg = 90; // Oy mặc định thẳng đứng
       let dragging=false, lastRaw=0, ignoreSync=false, activePointerId=null;
-function resizeCanvas(){
-  const rect = canvas.getBoundingClientRect();
-  const scale = window.devicePixelRatio || 1;
 
-  canvas.width = rect.width * scale;
-  canvas.height = rect.height * scale;
-
-  ctx.setTransform(scale, 0, 0, scale, 0, 0); // scale ngược để không bị phóng to
-
-  cx = rect.width / 2;
-  cy = rect.height / 2;
-
-  redraw();
-}
 
       function drawAxes(){
         ctx.save();
@@ -1238,6 +1236,7 @@ function resizeCanvas(){
 </script>
 </body>
 </html>
+
 
 
 
