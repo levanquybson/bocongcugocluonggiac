@@ -233,7 +233,7 @@ body {
         </div>
 
         <div class="row" style="flex-wrap:nowrap;">
-          <label for="betaInput1">⏰Góc xOy (°):</label>
+          <label for="betaInput1">⏰Góc uOv (°):</label>
           <input type="number" id="betaInput1" value="45" step="1">
         </div>
 
@@ -389,14 +389,14 @@ body {
         ctx.lineTo(xRight, cy);
         ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2.4; ctx.stroke();
         drawArrowHead(ctx, xRight, cy, 1, 0, '#0f172a');
-        ctx.fillStyle='#0b2a4a'; ctx.font='14px Inter'; ctx.fillText('x', xRight-12, cy-10);
+        ctx.fillStyle='#0b2a4a'; ctx.font='14px Inter'; ctx.fillText('u', xRight-12, cy-10);
 
         const len=270, ang=toRad(betaDeg);
         const xOy=cx+len*Math.cos(ang), yOy=cy-len*Math.sin(ang);
         ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(xOy,yOy);
         ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 2.4; ctx.stroke();
         drawArrowHead(ctx, xOy, yOy, Math.cos(ang), -Math.sin(ang), '#0f172a');
-        ctx.fillText('y', xOy+8, yOy+4);
+        ctx.fillText('v', xOy+8, yOy+4);
 
         ctx.beginPath(); ctx.arc(cx,cy,3,0,2*Math.PI); ctx.fillStyle='#000'; ctx.fill();
         ctx.fillText('O', cx-18, cy+16);
